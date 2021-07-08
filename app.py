@@ -3,9 +3,9 @@ from flask_sqlalchemy import SQLAlchemy
 import os
 
 host = os.getenv('POSTGRES_HOST', 'localhost')
-database = os.getenv('POSTGRES_DATABASE', 'Keto')
-user = os.getenv('POSTGRES_USER', 'postgres')
-password = os.getenv('POSTGRES_PASS', 'abc123')
+database = os.getenv('POSTGRES_DATABASE', 'database')
+user = os.getenv('POSTGRES_USER', 'username')
+password = os.getenv('POSTGRES_PASS', 'password')
 
 app = Flask(__name__)
 app.debug = True
@@ -66,8 +66,6 @@ def read():
     # data_list =  db.engine.execute(selection)
     # for i in data_list:
     #     print(i)
-
-    # width = 9 * 200
     return render_template('read.html', datalist=option_1)
 
 @app.route('/submit', methods=['POST']) 
