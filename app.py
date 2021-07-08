@@ -29,7 +29,7 @@ class tutorial(db.Model):
     bool = db.Column(db.Boolean())
 
     def __init__(self, string, date, time, integer, numeric, selection, textarea, bool):
-        self.string = valid(string)
+        self.string = string
         self.date = valid(date)
         self.time = valid(time)
         self.integer = valid(integer)
