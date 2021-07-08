@@ -1,0 +1,16 @@
+{% extends "nav_footer.html" %}
+{% block header %}Home Page{% endblock header%}
+{% block content %}
+<div class="header">
+    <span>
+        {% if success == 'success' %}
+        [Data has been succesfully saved!]
+        {% endif %}
+    </span>
+    <h1>Flask Tutorial</h1>
+    <div class="button-container">
+        <a href="{{ url_for('write') }}" class="btn">Write</a>
+        <a href="{{ url_for('read') }}" class="btn">Read</a>
+    </div>
+</div>
+{% endblock content %}

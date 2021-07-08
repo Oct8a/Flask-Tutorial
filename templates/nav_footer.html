@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../static/style.css" />
+</head>
+
+<body>
+    <div class="navbar">
+        <img src="../static/green-database.svg">
+        <h1>{% block header %}{% endblock %}</h1>
+        <a href="{{ url_for('write') }}" class="right">Write</a>
+        <a href="{{ url_for('read') }}" class="right">Read</a>
+        <a href="{{ url_for('index') }}" class="right">Home</a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+    <div class="footer">
+        <h1>Header</h1>
+    </div>
+</body>

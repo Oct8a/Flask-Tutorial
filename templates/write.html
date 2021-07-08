@@ -1,0 +1,44 @@
+{% extends "nav_footer.html" %}
+{% block header %}Write Data to PSQL{% endblock header%}
+{% block content %}
+
+<div class="out_form">
+    <div class="form">
+        <h1>Write Data</h1>
+        <form action="/submit" method="POST">
+            <label>String</label><br>
+            <input type="text" name="string" placeholder="String" maxlength="15"><br>
+
+            <label>Date</label><br>
+            <input type="date" name="date" /><br>
+
+            <label>Time</label><br>
+            <input type="time" name="time"><br>
+
+            <label>Integer</label><br>
+            <input type="number" name="integer" placeholder="0" min=0 max=10 /><br>
+
+            <label>Numeric</label><br>
+            <input type="number" name="numeric" placeholder="000.00" min="0" max="999.99" step="0.01" /><br>
+
+            <label>Selection</label><br>
+            <SELECT name="selection">
+                <OPTION value="Option 1">Option 1</OPTION>
+                <OPTION value="Option 2">Option 2</OPTION>
+                <OPTION value="Option 3">Option 3</OPTION>
+            </SELECT><br>
+
+            <label>String (Text Area)</label><br>
+            <textarea name="textarea" placeholder="500 Characters" maxlength=500 rows=5></textarea>
+            <br>
+
+            <input type="checkbox" name="bool" value="True" /><label>Boolean</label><br>
+
+            <input type="hidden" name="hide" value="You Found Me!">
+
+            <input class="btn" type="submit" value="Submit" />
+        </form>
+    </div>
+</div>
+
+{% endblock content %}

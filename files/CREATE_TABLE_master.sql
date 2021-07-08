@@ -1,0 +1,462 @@
+CREATE TABLE patient_info (
+	MRNumber int PRIMARY KEY, 
+	firstname varchar(30) NOT NULL, 
+	lastname varchar(30) NOT NULL, 
+	birthdate date NOT NULL,
+	sex INT NOT NULL
+); 
+
+CREATE TABLE support (
+	support_id INT GENERATED ALWAYS AS IDENTITY,
+	firstname VARCHAR (100),
+	lastname VARCHAR (100),
+	email VARCHAR (100),
+	category VARCHAR (100),
+	details VARCHAR (2000),
+	completed BOOLEAN
+);
+
+CREATE TABLE alertness (
+	alertness_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Alertness VARCHAR(2000),
+	Activity VARCHAR (2000),
+	Development VARCHAR (2000),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(alertness_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE anthropometrics (
+	anthropometrics_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Source NUMERIC (1,0) CHECK (Source > 0 AND Source < 4),
+	CP NUMERIC (2,0),
+	PA NUMERIC (3,2),
+	Ht NUMERIC (4,1),
+	Wt NUMERIC (3,1),
+	HC NUMERIC (3,1),
+	UAC NUMERIC (3,1),
+	TSF NUMERIC (3,1),
+	SSF NUMERIC (3,1),
+	USF NUMERIC (3,1),
+	SISF NUMERIC (3,1),
+	MBSF NUMERIC (3,1),
+	UC NUMERIC (3,1),
+	R NUMERIC (4,1),
+	X NUMERIC (3,1),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY (anthropometrics_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE clinic_gi_issues (
+	clinic_gi_issues_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Clinic_Const VARCHAR(3),
+	Clinic_Dia VARCHAR(3),
+	Clinic_Vom VARCHAR(3),
+	Clinic_Nausea VARCHAR(3),
+	Clinic_Gag_Retch VARCHAR(3),
+	Clinic_Nissen VARCHAR(3),
+	Clinic_Descr_Const VARCHAR(2000),
+	Clinic_Descr_Dia VARCHAR(2000),
+	Clinic_Descr_Vom VARCHAR(2000),
+	Clinic_Descr_Nausea VARCHAR(2000),
+	Clinic_Descr_Gag_Retch VARCHAR(2000),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(clinic_gi_issues_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE clinic_vns (
+	clinic_vns_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Mag_Act NUMERIC(5,0),
+	Output_Curr NUMERIC(5,2),
+	VNS_Frequency NUMERIC(5,2),
+	Pulse_Width NUMERIC(5,2),
+	Signal_On NUMERIC(4,2),
+	Signal_Off NUMERIC(4,2),
+	Magnet_Current NUMERIC(4,2),
+	Magnet_On NUMERIC(4,2),
+	Magnet_Pulse NUMERIC(4,2),
+	Lead_Test VARCHAR(30),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(clinic_vns_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE clinical_labs (
+	clinical_labs_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Time TIME,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Source NUMERIC (1,0) CHECK (Source > 0 AND Source < 4),
+	Fasting NUMERIC (1,0),
+	Tg_Blood NUMERIC (4,0),
+	HDL_Blood NUMERIC(3,0),
+	LDL_Blood NUMERIC(3,0),
+	TC_Blood NUMERIC(4,0),
+	Na_Blood NUMERIC(3,0),
+	K_Blood NUMERIC(3,1),
+	Chl_Blood NUMERIC(3,0),
+	CO2_Blood NUMERIC(2,0),
+	BUN_Blood NUMERIC(2,0),
+	Cr_Blood NUMERIC(3,2),
+	Glus_Blood NUMERIC(5,2),
+	Ca_Blood NUMERIC(3,1),
+	Mag_Blood NUMERIC(3,1),
+	Phos_Blood NUMERIC(3,1),
+	Uric_Acid_Blood NUMERIC(3,1),
+	Pro_Blood NUMERIC(3,1),
+	Alb_Blood NUMERIC(3,1),
+	TBil_Blood NUMERIC(3,1),
+	Alp_Blood NUMERIC(3,0),
+	Ast_Blood NUMERIC(3,0),
+	Alt_Blood NUMERIC(3,0),
+	RBC_Blood NUMERIC(3,2),
+	Hgb_Blood NUMERIC(3,2),
+	Hct_Blood NUMERIC(3,2),
+	Platelet_Blood NUMERIC(3,0),
+	MCV_Blood NUMERIC(3,1),
+	MCH_Blood NUMERIC(3,1),
+	MCHC_Blood NUMERIC(3,1),
+	MPV_Blood NUMERIC(3,1),
+	RDW_Blood NUMERIC(3,1),
+	WBC_Blood NUMERIC(3,1),
+	Ammonia_Blood NUMERIC(3,2),
+	BHb_Blood_Mmol NUMERIC(3,1),
+	Acac_Blood NUMERIC(3,2),
+	Neutrophils_Blood NUMERIC(3,2),
+	Lymphocytes_Blood NUMERIC(3,2),
+	Monocytes_Blood NUMERIC(3,2),
+	Eosinophils_Blood NUMERIC(3,2),
+	Basophils_Blood NUMERIC(3,2),
+	Large_Unstained_Cells_Blood NUMERIC(3,2),
+	Neutrophils_Absolute_Blood NUMERIC(3,2),
+	Lymphocytes_Absolute_Blood NUMERIC(3,2),
+	Monocytes_Absolute_Blood NUMERIC(3,2),
+	Eosinophils_Absolute_Blood NUMERIC(3,2),
+	Basophils_Absolute_Blood NUMERIC(3,2),
+	Glus_Blood_CRC NUMERIC(5,2),
+	Lact_Blood_CRC_Mmol NUMERIC(3,2),
+	LAB_BLOOD_1 INT,
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(clinical_labs_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE daily_intake (
+	daily_intake_id INT GENERATED ALWAYS AS IDENTITY,  
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	PKT_Recipe_Number VARCHAR(5),
+	Data_Quality_Diet NUMERIC(2,0),
+	Day_Quality_Diet NUMERIC(2,0),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(daily_intake_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE diet_rx (
+	diet_rx_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	ROF_Pr VARCHAR(5),
+	Reason_For_Change_Diet NUMERIC(2,0) CHECK(Reason_For_Change_Diet < 23),
+	Snack_Cal_Pr NUMERIC(4,1),
+	Snack_Ratio_Pr NUMERIC(3,2),
+	Snack_Number_Pr NUMERIC(2,0),
+	Meal_Number_Pr NUMERIC(2,0),
+	Ratio_Pr NUMERIC(3,2),
+	Cal_Pr NUMERIC(6,2),
+	Pro_Pr NUMERIC(4,2),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(diet_rx_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE med_data (
+	med_data_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	NDID VARCHAR(8),
+	Med_ID VARCHAR(8),
+	Reason_For_Change_Med NUMERIC(2,0) CHECK(Reason_For_Change_Med < 17),
+	Prod_Name VARCHAR(100),
+	Daily_Med_Dose_Mg NUMERIC(6,2),
+	Med_Doses NUMERIC(2,0),
+	Med_Comments VARCHAR(500),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(med_data_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE menus (
+	menus_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Cal_Prcnt NUMERIC(6,2),
+	Procnt_Prcnt NUMERIC(4,2),
+	Ratio_Pr NUMERIC(3,2),
+	Meal_Number_Pr NUMERIC(2,0),
+	Snack_Number_Pr NUMERIC(2,0),
+	PKT_Recipe_Name VARCHAR(100),
+	PKT_Recipe_Number VARCHAR(5),
+	PKT_Recipe_Ingredient_Amount NUMERIC(5,2),
+	NDID VARCHAR(8),
+	Prod_Name VARCHAR(100),
+	Recipe_Type NUMERIC(2,0),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(menus_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE other_med (
+	other_med_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	NDID VARCHAR(8),
+	Prod_Name VARCHAR(100),
+	Med_Amount NUMERIC(5),
+	Med_Unit VARCHAR(20),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(other_med_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE seizure_data (
+	seizure_data_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Day_Quality_S NUMERIC(1,0) CHECK(Day_Quality_S > 0 AND Day_Quality_S < 4),
+	Seizure_Severity VARCHAR(4),
+	Seizure_Length VARCHAR(4),
+	Seizure_Type VARCHAR(4),
+	Seizure_Variable VARCHAR(4),
+	Seizure_Number VARCHAR(4),
+	Seizure_Cluster NUMERIC(4,0),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(seizure_data_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE seizure_ranking (
+	seizure_ranking_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Seizure_Parameter VARCHAR(6),
+	Seizure_Entry VARCHAR(6),
+	Seizure_Ranking NUMERIC(6,0),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(seizure_ranking_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE urine_kt_sg (
+	urine_kt_sg_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Urine_Kt NUMERIC(5,1),
+	Urine_SG NUMERIC(5,5),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(urine_kt_sg_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+CREATE TABLE vitals (
+	vitals_id INT GENERATED ALWAYS AS IDENTITY,
+	MRNumber INT NOT NULL,
+	Date DATE NOT NULL,
+	Day_Type NUMERIC (1,0) CHECK (Day_Type > 0 AND Day_Type < 5) NOT NULL,
+	Source NUMERIC (1,0) CHECK (Source > 0 AND Source < 4),
+	BP_Sys NUMERIC(3,0),
+	BP_Dia NUMERIC(2,0),
+	Temp NUMERIC(3,1),
+	RR NUMERIC(2,0),
+	HR NUMERIC(3,0),
+	Entered VARCHAR (15),
+	Audited VARCHAR (15),
+	Comments VARCHAR (500),
+	PRIMARY KEY(vitals_id),
+	CONSTRAINT fk_MRN
+		FOREIGN KEY(MRNumber)
+			REFERENCES Patient_Info(MRNumber)
+);
+
+
+CREATE TABLE ref_cdc_anthro_source (
+	CUSTOM_SEX_AGE_HEIGHT VARCHAR(6),
+	SEX_CDC_HT_AGE INT,
+	AGE_MO_CDC_HT_AGE NUMERIC,
+	L_CDC_HT_AGE NUMERIC,
+	M_CDC_HT_AGE NUMERIC,
+	S_CDC_HT_AGE NUMERIC,
+	CUSTOM_SEX_AGE_WEIGHT VARCHAR(6),
+	SEX_CDC_WT_AGE INT,
+	AGE_MO_CDC_WT_AGE NUMERIC,
+	L_CDC_WT_AGE NUMERIC,
+	M_CDC_WT_AGE NUMERIC,
+	S_CDC_WT_AGE NUMERIC,
+	CUSTOM_SEX_AGE_BMI VARCHAR(6),
+	SEX_CDC_BMI_AGE INT,
+	AGE_MO_CDC_BMI_AGE NUMERIC,
+	L_CDC_BMI_AGE NUMERIC,
+	M_CDC_BMI_AGE NUMERIC,
+	S_CDC_BMI_AGE NUMERIC,
+	SEX_CDC_WT_FOR_HT INT,
+	HEIGHT_CDC_WT_FOR_HT NUMERIC,
+	L_CDC_WT_FOR_HT NUMERIC,
+	M_CDC_WT_FOR_HT NUMERIC,
+	S_CDC_WT_FOR_HT NUMERIC,
+	SEX_CDC_HC_AGE INT,
+	AGE_MO_CDC_HC_AGE NUMERIC,
+	L_CDC_HC_AGE NUMERIC,
+	M_CDC_HC_AGE NUMERIC,
+	S_CDC_HC_AGE NUMERIC
+);
+
+CREATE TABLE ref_who_anthro_source (
+	SEX_WHO_BMI_AGE INT,
+	AGE_MO_WHO_BMI_AGE NUMERIC,
+	L_WHO_BMI_AGE NUMERIC,
+	M_WHO_BMI_AGE NUMERIC,
+	S_WHO_BMI_AGE NUMERIC,
+	BMI_CUSTOM_SEX_AGE VARCHAR(6),
+	SEX_WHO_BMI_AGE2 INT,
+	AGE_DAY_WHO_BMI_AGE NUMERIC,
+	L_WHO_BMI_AGE2 NUMERIC,
+	M_WHO_BMI_AGE2 NUMERIC,
+	S_WHO_BMI_AGE2 NUMERIC,
+	SEX_WHO_HC_AGE INT,
+	AGE_DAY_WHO_HC_AGE NUMERIC,
+	L_WHO_HC_AGE NUMERIC,
+	M_WHO_HC_AGE NUMERIC,
+	S_WHO_HC_AGE NUMERIC,
+	SEX_WHO_HT_AGE INT,
+	AGE_MO_WHO_HT_AGE NUMERIC,
+	L_WHO_HT_AGE NUMERIC,
+	M_WHO_HT_AGE NUMERIC,
+	S_WHO_HT_AGE NUMERIC,
+	CUSTOM_SEX_AGE_HEIGHT VARCHAR(6),
+	SEX_WHO_HT_AGE2 INT,
+	AGE_DAY_WHO_HT_AGE NUMERIC,
+	L_WHO_HT_AGE2 NUMERIC,
+	M_WHO_HT_AGE2 NUMERIC,
+	S_WHO_HT_AGE2 NUMERIC,
+	SEX_WHO_SSF_AGE INT,
+	AGE_DAY_WHO_SSF_AGE NUMERIC,
+	L_WHO_SSF_AGE NUMERIC,
+	M_WHO_SSF_AGE NUMERIC,
+	S_WHO_SSF_AGE NUMERIC,
+	SEX_WHO_TSF_AGE INT,
+	AGE_DAY_WHO_TSF_AGE NUMERIC,
+	L_WHO_TSF_AGE NUMERIC,
+	M_WHO_TSF_AGE NUMERIC,
+	S_WHO_TSF_AGE NUMERIC,
+	SEX_WHO_UAC_AGE INT,
+	AGE_DAY_WHO_UAC_AGE NUMERIC,
+	L_WHO_UAC_AGE NUMERIC,
+	M_WHO_UAC_AGE NUMERIC,
+	S_WHO_UAC_AGE NUMERIC,
+	SEX_WHO_WT_AGE INT,
+	AGE_MO_WHO_WT_AGE NUMERIC,
+	L_WHO_WT_AGE NUMERIC,
+	M_WHO_WT_AGE NUMERIC,
+	S_WHO_WT_AGE NUMERIC,
+	CUSTOM_SEX_AGE_WEIGHT VARCHAR(6),
+	SEX_WHO_WT_AGE2 INT,
+	AGE_DAY_WHO_WT_AGE NUMERIC,
+	L_WHO_WT_AGE2 NUMERIC,
+	M_WHO_WT_AGE2 NUMERIC,
+	S_WHO_WT_AGE2 NUMERIC,
+	SEX_WHO_WT_FOR_HT INT,
+	HEIGHT_WHO_WT_FOR_HT NUMERIC,
+	L_WHO_WT_FOR_HT NUMERIC,
+	M_WHO_WT_FOR_HT NUMERIC,
+	S_WHO_WT_FOR_HT NUMERIC
+);
+
+CREATE TABLE ref_nhanes_anthro_source (
+	CUSTOM_BMI_SEX_AGE VARCHAR(6),
+	SEX_NHANES_BMI_AGE INT,
+	AGE_YEAR_NHANES_BMI_AGE NUMERIC,
+	MEAN_NHANES_BMI_AGE NUMERIC,
+	SD_NHANES_BMI_AGE NUMERIC,
+	CUSTOM_HT_SEX_AGE VARCHAR(6),
+	SEX_NHANES_HT_AGE INT,
+	AGE_YEAR_NHANES_HT_AGE NUMERIC,
+	MEAN_NHANES_HT_AGE NUMERIC,
+	SD_NHANES_HT_AGE NUMERIC,
+	CUSTOM_WT_SEX_AGE VARCHAR(6),
+	SEX_NHANES_WT_AGE INT,
+	AGE_YEAR_NHANES_WT_AGE NUMERIC,
+	MEAN_NHANES_WT_AGE NUMERIC,
+	SD_NHANES_WT_AGE NUMERIC
+);

@@ -1,0 +1,195 @@
+* {
+	box-sizing: border-box;
+}
+
+/* Style the body */
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Home Page */
+
+.header {
+	height: 790px;
+	padding-top: 200px;
+	padding-bottom: 200px;
+	text-align: center;
+	background: #ddd;
+	background-image: url("dinosaur.png");
+	background-size: 790px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	color: white;
+	text-shadow: 4px 4px 10px black;
+}
+
+.header span {
+	background: rgba(0, 0, 0, 0.7);
+	color: white;
+}
+/* Navigation Bar */
+
+.navbar {
+	overflow: hidden;
+	background-color: #4d4d4d;
+}
+
+.navbar img {
+	float: left;
+	width: auto;
+	padding: 5px;
+	height: 40px;
+}
+
+.navbar h1 {
+	float: left;
+	font-size: large;
+	text-align: center;
+	padding: 10px 10px 10px 5px;
+	padding-right: -2px;
+	margin: 0px;
+	color: white;
+}
+
+.navbar a {
+	font-size: large;
+	padding: 12px;
+	text-decoration: none;
+	float: right;
+	color: white;
+}
+
+.navbar a:hover {
+	background-color: #ddd;
+	color: black;
+}
+
+/* Footer */
+
+.footer {
+	padding: 3px;
+	text-align: center;
+	color: white;
+	background-color: #4d4d4d;
+	box-shadow: 0 50vh 0 50vh #4d4d4d;
+}
+
+/* Buttons */
+
+.button-container div {
+	display: inline;
+}
+
+.button-container a {
+	display: inline;
+	vertical-align: middle;
+	text-decoration: none;
+}
+
+.btn {
+	float: center;
+	border: 0;
+	line-height: 2.5;
+	padding: 10px 30px 10px 30px;
+	font-size: 1rem;
+	text-align: center;
+	color: #fff;
+	text-shadow: 1px 1px 1px #000;
+	border-radius: 10px;
+	background-color: green;
+	box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .6), inset -2px -2px 3px rgba(0, 0, 0, .6);
+}
+
+.btn:hover {
+	background-color: #4ade21
+}
+
+.btn:active {
+	box-shadow: inset -2px -2px 3px rgba(255, 255, 255, .6), inset 2px 2px 3px rgba(0, 0, 0, .6);
+}
+
+/* Write Page */
+
+.out_form {
+	height: 790px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	text-align: center;
+	background: #ddd;
+	background-image: url("dinosaur.png");
+	background-size: 790px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	color: white;
+	text-shadow: 4px 4px 10px black;
+}
+
+.form {
+	overflow: auto;
+	height: 100%;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	margin: auto;
+	width: 50%;
+	background: rgba(0, 0, 0, 0.7)
+}
+
+.form input:not([type="checkbox"],[type="submit"]), textarea, select {
+	margin: 10px;
+	width: 50%;
+	padding: 5px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.form input[type=checkbox] {
+	margin: 5px 10px 20px 10px;
+	font-family: Arial, Helvetica, sans-serif;
+	padding: 5px;
+}
+
+.form input[type=submit] {
+	width: 50%;
+	height: 40px;
+	text-align: center;
+	padding: 0px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.form label {
+	font-size: large;
+}
+
+.form hr {
+	width: 200px;
+}
+
+.square {
+	margin: auto;
+	text-align: center;
+	width: 50%;
+	font-size: large;
+}
+
+/* Scroll Bar */
+
+::-webkit-scrollbar {
+	width: 10px;
+}
+
+
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px grey;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: green;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #009f00;
+}
