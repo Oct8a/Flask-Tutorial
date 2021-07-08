@@ -7,6 +7,6 @@ CREATE TABLE tutorial (
 	numeric NUMERIC(5,2),
 	selection VARCHAR(10),
 	textarea VARCHAR(500),
-    bool BOOLEAN,
+	bool BOOLEAN,
 	PRIMARY KEY(tutorial_id)
 );
