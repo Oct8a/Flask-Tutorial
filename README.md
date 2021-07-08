@@ -66,6 +66,14 @@ Small Web Application created with Flask to show how to Run a Flask application,
 ### Production Mode
     Flask run
 
+## PSQL Helpful Commands
+    psql -U [username] #Login to PostgreSQL
+    CREATE DATABASE [name]; #Create a new database
+    \l #List Created Databases
+    \c [database] #Connect to Database
+    \d #List Tables in Database
+    \i path/to/file.sql #Execute SQL queries
+    
 ## Resources
     https://fontawesome.com/download
     https://pixabay.com/
