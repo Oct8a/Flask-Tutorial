@@ -1,6 +1,6 @@
 # Flask Tutorial
 ## Description
-Small Web Application created with Flask to show how to Run a Flask application, connect to a PostgreSQL Database, Write to the database using an HTML form and Read from the database and display the results in HTML.
+Small Web Application created with Flask to show how to Run a Flask application, connect to a PostgreSQL Database, Write to the database using an HTML form and Read from the database to display its results in HTML.
 
 ## List of things the tutorial covers:
     Flask:
