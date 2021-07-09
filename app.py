@@ -30,7 +30,7 @@ class tutorial(db.Model):
 
     def __init__(self, string, date, time, integer, numeric, selection, textarea, bool):
         self.string = string
-        self.date = valid(date)
+        self.date = date
         self.time = valid(time)
         self.integer = valid(integer)
         self.numeric = valid(numeric)
@@ -41,7 +41,6 @@ class tutorial(db.Model):
 
 @app.route('/')
 @app.route('/home')
-# @app.route('/cool')
 def index():
     return render_template('index.html') 
 
@@ -52,27 +51,21 @@ def write():
 @app.route('/read', methods=['GET']) 
 def read():
 
-    # selection = 'Option 1'
     option_1 = db.session.query(tutorial)
-    # option_1 = db.session.query(tutorial).filter_by(selection=selection)
-    # option_1 = db.session.query(tutorial).filter_by(selection=selection).first()
-    # for i in option_1:
-    #     print(i)
-    # print(option_1)
-    
-    # selection = "SELECT * FROM tutorial"
-    # # selection = "SELECT * FROM tutorial WHERE selection=\'" + selection + "\'"
-    # # selection = "SELECT * FROM tutorial WHERE selection=\'" + selection + "\' LIMIT 1"
-    # data_list =  db.engine.execute(selection)
-    # for i in data_list:
-    #     print(i)
+    # option_2 = db.engine.execute("SELECT * FROM tutorial")
+
+    # option_1 = db.session.query(tutorial).filter_by(selection='Option 1')
+    # option_2 = db.engine.execute("SELECT * FROM tutorial WHERE selection=\'Option 1\'")
+   
+    # option_1 = db.session.query(tutorial).filter_by(selection='Option 1').first()
+    # option_1 = db.engine.execute("SELECT * FROM tutorial WHERE selection=\'Option 1\' LIMIT 1"
+
     return render_template('read.html', datalist=option_1)
 
 @app.route('/submit', methods=['POST']) 
 def submit():
 
     if request.method == 'POST':
-        print(request.form['found'])
         string = request.form['string']
         date = request.form['date']
         time = request.form['time']
@@ -80,15 +73,16 @@ def submit():
         numeric = request.form['numeric']
         selection = request.form['selection']
         textarea = request.form['textarea']
-        bool = request.form.getlist('bool')
-        bool = False if len(bool) == 0 else True
+        bool = request.form.get('bool')
+        bool = False if bool == None else True
+        print(request.form['found'])
         db.session.query(tutorial)
         data = tutorial(string, date, time, integer, numeric, selection, textarea, bool)
         db.session.add(data)
         db.session.commit()
         return render_template('index.html', success='success')
-
-    return render_template('index.html')
+    else:
+        return render_template('index.html')
 
 if __name__ == '__main__':
     app.run()

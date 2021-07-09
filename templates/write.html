@@ -4,13 +4,13 @@
 
 <div class="out_form">
     <div class="form">
-        <h1>Write Data</h1>
+        <h1>Writing Data</h1>
         <form action="/submit" method="POST">
             <label>String</label><br>
             <input type="text" name="string" placeholder="String" required><br>
 
             <label>Date</label><br>
-            <input type="date" name="date" /><br>
+            <input type="date" name="date" required><br>
 
             <label>Time</label><br>
             <input type="time" name="time"><br>
@@ -32,9 +32,9 @@
             <textarea name="textarea" placeholder="500 Characters" maxlength=500 rows=5></textarea>
             <br>
 
-            <input type="checkbox" name="bool" value="True" /><label>Boolean</label><br>
+            <input type="checkbox" name="bool"><label>Boolean</label><br>
 
-            <input type="hidden" name="hide" value="You Found Me!">
+            <input type="hidden" name="found" value="You Found Me!">
 
             <input class="btn" type="submit" value="Submit" />
         </form>

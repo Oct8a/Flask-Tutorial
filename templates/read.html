@@ -5,24 +5,23 @@
 <div class="out_form">
     <div class="form">
         <h1>Reading Data</h1>
-        <hr>
-        <SELECT name="selection">
+        <select name="selection">
             {% for i in datalist %}
-            <OPTION value="{{i.tutorial_id}}">{{i.string}}</OPTION>
+                <option value="{{i.tutorial_id}}">{{i.string}}</option>
             {% endfor %}
-        </SELECT>
+        </select>
         <div class="square">
             {% for i in datalist %}
-            <h3>{{i.tutorial_id}}</h3>
-            {{i.string}}<br>
-            {{i.date}}<br>
-            {{i.time}}<br>
-            {{i.integer}}<br>
-            {{i.numeric}}<br>
-            {{i.selection}}<br>
-            {{i.textarea}}<br>
-            {{i.bool}} <br>
-            <hr>
+                <h3>{{i.tutorial_id}}</h3>
+                {{i.string}}<br>
+                {{i.date}}<br>
+                {{i.time}}<br>
+                {{i.integer}}<br>
+                {{i.numeric}}<br>
+                {{i.selection}}<br>
+                {{i.textarea}}<br>
+                {{i.bool}} <br>
+                <hr>
             {% endfor %}
         </div>
     </div>
