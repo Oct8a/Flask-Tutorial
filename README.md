@@ -68,17 +68,18 @@ Small Web Application created with Flask to show how to Run a Flask application,
 
 ## PostgreSQL Required Table
     CREATE TABLE tutorial (
-	tutorial_id INT GENERATED ALWAYS AS IDENTITY,
-	string VARCHAR NOT NULL,
-	date DATE,
-	time TIME,
-	integer INT,
-	numeric NUMERIC(5,2),
-	selection VARCHAR(15),
-	textarea VARCHAR(500),
-	bool BOOLEAN,
-	PRIMARY KEY(tutorial_id)
+        tutorial_id INT GENERATED ALWAYS AS IDENTITY,  
+        string VARCHAR NOT NULL,
+        date DATE NOT NULL,
+        time TIME,
+        integer INT CHECK (integer > 0 AND integer < 10),
+        numeric NUMERIC(5,2),
+        selection VARCHAR(10),
+        textarea VARCHAR(500),
+        bool BOOLEAN,
+        PRIMARY KEY(tutorial_id)
     );
+
 
 ## PSQL Helpful Commands
     psql -U [username] #Login to PostgreSQL
